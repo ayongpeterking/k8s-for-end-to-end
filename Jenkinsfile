@@ -3,7 +3,7 @@ pipeline {
         label 'docker-node'
     }
     environment {
-        APP_NAME = "py-webapp"
+        APP_NAME = "dmancloud/complete-prodcution-e2e-github-actions"
     }
     stages {
         stage("Cleanup Workspace") {
