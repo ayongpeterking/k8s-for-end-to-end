@@ -56,9 +56,11 @@ pipeline {
                     withCredentials([usernamePassword(credentialsId: 'github-id', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
                         sh '''
                             git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ayong/k8s-for-end-to-end.git HEAD:main
-                        '''
-                    }
+                        '''}
+             
                 }
+                
+            }
         }
     }
 }
