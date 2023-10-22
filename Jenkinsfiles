@@ -18,22 +18,11 @@ pipeline {
         }
         stage("Update the Deployment Tags") {
             steps {
-                script {
-                    // Displaying the deployment.yaml contents before the update
-                    echo '--- Before Update ---'
-                    sh 'cat deployment.yaml'
-                    echo '---------------------'
-
-                    // Using the sh step to execute the sed command to update the nginx.yaml file
-                    sh '''
-                        sed -i "s|$APP_NAME|$APP_NAME:$IMAGE_TAG|g" nginx.yaml
-                    '''
-
-                    // Displaying the deployment.yaml contents after the update
-                    echo '--- After Update ---'
-                    sh 'cat deploymant.yaml'
-                    echo '--------------------'
-                }
+                sh '''
+                    cat deployment.yaml
+                    sed -i "s/${APP_NAME}/${APP_NAME}:${IMAGE_TAG}/g" deployment.yaml
+                    cat deployment.yaml
+                '''
             }
         }
         stage("Push the changed deployment file to Git") {
