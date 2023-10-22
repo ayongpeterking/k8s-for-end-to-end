@@ -31,7 +31,7 @@ pipeline {
 
                     // Displaying the deployment.yaml contents after the update
                     echo '--- After Update ---'
-                    sh 'cat deploymant.yaml'
+                    sh 'cat deployment.yaml'
                     echo '--------------------'
                 }
             }
