@@ -1,1 +1,0 @@
-# k8s-for-end-to-end
