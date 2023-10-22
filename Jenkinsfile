@@ -26,7 +26,7 @@ pipeline {
 
                     // Using the sh step to execute the sed command to update the nginx.yaml file
                     sh '''
-                        sed -i "s|$APP_NAME|$APP_NAME:$IMAGE_TAG|g" nginx.yaml
+                        sed -i "s|$APP_NAME|$APP_NAME:$IMAGE_TAG|g" deployment.yaml
                     '''
 
                     // Displaying the deployment.yaml contents after the update
