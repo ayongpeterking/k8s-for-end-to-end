@@ -38,16 +38,27 @@ pipeline {
         }
         stage("Push the changed deployment file to Git") {
             steps {
-                sh '''
-                    git config --global user.name "ayong"
-                    git config --global user.email "ayongpeterking@yahoo.com"
-                    git add deployment.yaml
-                    git commit -m "Updated Deployment Manifest"
-                    withCredentials([gitUsernamePassword(credentialsId: 'github-id', gitRepoName: 'Default')]) {
-                        sh 'git push https://github.com/ayongpeterking/k8s-for-end-to-end.git main'
+                script {
+                    // Setting up Git configuration
+                    sh '''
+                        git config user.name "ayongpeterking"
+                        git config user.email "ayongpeterking@yahoo.com"
+                    '''
+
+                    // Committing the changes
+                    sh '''
+                        git add deployment.yaml
+                        git commit -m "Updated deployment.yaml with new image tag"
+                    '''
+
+                    // Pushing the changes back to the repository
+                    // Assuming you have set up Git credentials in Jenkins with the ID 'github-credentials-id'
+                    withCredentials([usernamePassword(credentialsId: 'github-id', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+                        sh '''
+                            git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/ayong/k8s-for-end-to-end.git HEAD:main
+                        '''
                     }
-                '''
-            }
+                }
         }
     }
 }
