@@ -3,7 +3,7 @@ pipeline {
         label 'docker-node'
     }
     environment {
-        APP_NAME = "py-webapp"
+        APP_NAME = "dmancloud/complete-prodcution-e2e-github-actions"
     }
     stages {
         stage("Cleanup Workspace") {
@@ -20,7 +20,7 @@ pipeline {
             steps {
                 sh '''
                     cat deployment.yaml
-                    sed -i 's/${APP_NAME}/${APP_NAME}:${IMAGE_TAG}/g' deployment.yaml
+                    sed -i "s/${APP_NAME}/${APP_NAME}:${IMAGE_TAG}/g" deployment.yaml
                     cat deployment.yaml
                 '''
             }
