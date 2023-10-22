@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: complete-prodcution-e2e-app
-          image: dmancloud/complete-prodcution-e2e-github-actions
+          image: dmancloud/complete-prodcution-e2e-github-actions:1.0
           resources:
             limits:
               memory: "256Mi"
