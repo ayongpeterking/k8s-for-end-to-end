@@ -9,10 +9,10 @@ spec:
   template:
     metadata:
       labels:
-        app: complete-prodcution-e2e-app
+        app: end-to-end
     spec:
       containers:
-        - name: complete-prodcution-e2e-app
+        - name: end-to-end
           image: donpk/end-to-end
           resources:
             limits:
