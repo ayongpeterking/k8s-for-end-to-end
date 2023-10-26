@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: end-to-end-svc
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: end-to-end
   ports:
