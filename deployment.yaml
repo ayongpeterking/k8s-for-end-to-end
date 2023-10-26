@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: end-to-end-deploy
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: end-to-end
